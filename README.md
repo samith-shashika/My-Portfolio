@@ -66,7 +66,7 @@ Follow these steps to run the project locally.
 
           1️⃣ Clone the repository
           
-            git clone https://github.com/your-username/portfolio.git
+            git clone https://github.com/samith-shashika/portfolio.git
           
           2️⃣ Navigate to the project folder
           
@@ -97,7 +97,7 @@ Open 👉 http://localhost:3000 (CRA)
 ## 📬 Contact
 
 * Name: Samith Shashika
-* GitHub: https://github.com/SamithShashika71
+* GitHub: https://github.com/samith-shashika
 * Email: samithsashika71@gmail.com
 
 ---
