@@ -1,36 +1,50 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="280" viewBox="0 0 900 280">
+<svg width="100%" height="600" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Gradient for 3D look -->
-    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#9b5de5"></stop>
-      <stop offset="50%" stop-color="#7b2cbf"></stop>
-      <stop offset="100%" stop-color="#5a189a"></stop>
-    </linearGradient>
+    <filter id="ultra-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
 
-    <!-- Shiny animation gradient -->
-    <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="white" stop-opacity="0"></stop>
-      <stop offset="50%" stop-color="white" stop-opacity="0.6"></stop>
-      <stop offset="100%" stop-color="white" stop-opacity="0"></stop>
-      <animateTransform attributeName="gradientTransform" type="translate" from="-1 0" to="2 0" dur="3s" repeatCount="indefinite"></animateTransform>
+    <linearGradient id="pro-sweep" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="35%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#ffffff" />
+      <stop offset="65%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#06b6d4" />
+      <animate attributeName="x1" from="-100%" to="100%" dur="2.5s" repeatCount="indefinite" />
+      <animate attributeName="x2" from="0%" to="200%" dur="2.5s" repeatCount="indefinite" />
     </linearGradient>
-
-    <!-- Shine mask -->
-    <mask id="shineMask">
-      <rect width="100%" height="100%" fill="url(#shine)"></rect>
-    </mask>
   </defs>
 
-  <!-- Duplicate layers for extra bold effect -->
-  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="Verdana, Geneva, sans-serif" font-size="160" font-weight="900" fill="url(#purpleGradient)">
+  <text x="506" y="206" 
+        font-family="Arial Black, sans-serif" font-size="220" font-weight="900" 
+        text-anchor="middle" dominant-baseline="middle" 
+        fill="#014a57" style="letter-spacing: 10px;">
     SAMITH
   </text>
-  <text x="50%" y="55.5%" text-anchor="middle" dominant-baseline="middle" font-family="Verdana, Geneva, sans-serif" font-size="160" font-weight="900" fill="url(#purpleGradient)">
+  <text x="503" y="203" 
+        font-family="Arial Black, sans-serif" font-size="220" font-weight="900" 
+        text-anchor="middle" dominant-baseline="middle" 
+        fill="#027387" style="letter-spacing: 10px;">
     SAMITH
   </text>
 
-  <!-- Shiny overlay -->
-  <text x="50%" y="55%" text-anchor="middle" dominant-baseline="middle" font-family="Verdana, Geneva, sans-serif" font-size="160" font-weight="900" fill="white" mask="url(#shineMask)">
+  <g filter="url(#ultra-glow)">
+    <text x="500" y="200" 
+          font-family="Arial Black, sans-serif" font-size="220" font-weight="900" 
+          text-anchor="middle" dominant-baseline="middle" 
+          fill="url(#pro-sweep)" 
+          stroke="#06b6d4" stroke-width="3"
+          style="letter-spacing: 10px;">
+      SAMITH
+    </text>
+  </g>
+
+  <text x="500" y="200" 
+        font-family="Arial Black, sans-serif" font-size="220" font-weight="900" 
+        text-anchor="middle" dominant-baseline="middle" 
+        fill="none" stroke="white" stroke-width="1.2" stroke-opacity="0.5"
+        style="letter-spacing: 10px; pointer-events: none;">
     SAMITH
   </text>
 </svg>

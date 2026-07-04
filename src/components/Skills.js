@@ -1,144 +1,105 @@
-import meter1 from "../assets/img/meter1.svg";
-import meter2 from "../assets/img/meter2.svg";
-import meter3 from "../assets/img/meter3.svg";
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-import colorSharp from "../assets/img/color-sharp.png";
-import TrackVisibility from 'react-on-screen';
-import 'animate.css';
+import { motion } from "framer-motion";
 
-export const Skills = () => {
-  const responsive = {
-    superLargeDesktop: {
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
+const skillCategories = [
+  {
+    label: "Frontend", icon: "🖥️",
+    skills: [
+      { name: "HTML",         level: 95 },
+      { name: "CSS",          level: 90 },
+      { name: "Tailwind CSS", level: 85 },
+      { name: "JavaScript",   level: 90 },
+      { name: "React",        level: 90 },
+    ],
+  },
+  {
+    label: "Backend", icon: "⚙️",
+    skills: [
+      { name: "Node.js", level: 80 },
+      { name: "Python",  level: 75 },
+      { name: "Java",    level: 70 },
+      { name: "OOP",     level: 85 },
+    ],
+  },
+  {
+    label: "Mobile", icon: "📱",
+    skills: [
+      { name: "Dart",    level: 75 },
+      { name: "Flutter", level: 75 },
+    ],
+  },
+  {
+    label: "Database", icon: "🗄️",
+    skills: [
+      { name: "MySQL",      level: 80 },
+      { name: "MongoDB",    level: 80 },
+      { name: "PostgreSQL", level: 75 },
+    ],
+  },
+  {
+    label: "Tools & AI", icon: "🛠️",
+    skills: [
+      { name: "Figma",      level: 85 },
+      { name: "Git/GitHub", level: 90 },
+      { name: "Postman",    level: 80 },
+      { name: "ML/AI",      level: 70 },
+    ],
+  },
+];
 
-  return (
-    <section className="skill" id="skills">
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <TrackVisibility once>
-              {({ isVisible }) =>
-                <div className={`skill-bx ${isVisible ? "animate__animated animate__fadeInUp" : ""}`}>
-                  <h2>Skills</h2>
-                  <p>I have hands-on experience with modern tools and frameworks in software development. <br />My skill set includes following areas:</p>
-                  <Carousel
-                    responsive={responsive}
-                    infinite={true}
-                    className="owl-carousel owl-theme skill-slider"
-                  >
-                    <div className="item">
-                      <img src={meter1} alt="html" />
-                      <h5>HTML</h5>
-                    </div>
+const SkillBar = ({ name, level }) => (
+  <div className="skill-row">
+    <div className="skill-row-header">
+      <span className="skill-name">{name}</span>
+      <span className="skill-level">{level}%</span>
+    </div>
+    <div className="skill-bar-track">
+      <motion.div
+        className="skill-bar-fill"
+        initial={{ width: 0 }}
+        whileInView={{ width: `${level}%` }}
+        viewport={{ once: true, margin: "-40px" }}
+        transition={{ duration: 1.1, ease: "easeOut" }}
+      />
+    </div>
+  </div>
+);
 
-                    <div className="item">
-                      <img src={meter1} alt="css" />
-                      <h5>CSS</h5>
-                    </div>
+const CategoryCard = ({ label, icon, skills, index }) => (
+  <motion.div
+    className="skill-category-card glass-card"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, margin: "-40px" }}
+    transition={{ duration: 0.55, ease: "easeOut", delay: index * 0.08 }}
+  >
+    <div className="category-header">
+      <span className="category-icon">{icon}</span>
+      <h4 className="category-label">{label}</h4>
+    </div>
+    {skills.map((skill, i) => (
+      <SkillBar key={i} {...skill} />
+    ))}
+  </motion.div>
+);
 
-                    <div className="item">
-                      <img src={meter1} alt="css" />
-                      <h5>Tailwind CSS</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="javascript" />
-                      <h5>JavaScript</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="react" />
-                      <h5>React</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter2} alt="nodejs" />
-                      <h5>Node.js</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter1} alt="python" />
-                      <h5>Python</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="java" />
-                      <h5>Java</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter1} alt="oop" />
-                      <h5>OOP</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="dart" />
-                      <h5>Dart</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="flutter" />
-                      <h5>Flutter</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter2} alt="ml" />
-                      <h5>Machine Learning</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="mysql" />
-                      <h5>MySQL</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="mongodb" />
-                      <h5>MongoDB</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter2} alt="postgresql" />
-                      <h5>PostgreSQL</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter1} alt="figma" />
-                      <h5>Figma</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter1} alt="git" />
-                      <h5>Git/GitHub</h5>
-                    </div>
-
-                    <div className="item">
-                      <img src={meter3} alt="postman" />
-                      <h5>Postman</h5>
-                    </div>
-                  </Carousel>
-                </div>
-              }
-            </TrackVisibility>
-          </div>
-        </div>
+export const Skills = () => (
+  <section className="skill" id="skills">
+    <div className="container">
+      <motion.div
+        className="skill-header text-center mb-5"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <h2 className="section-title">Skills</h2>
+        <p>Hands-on experience with modern tools and frameworks across the full development stack.</p>
+      </motion.div>
+      <div className="skills-grid">
+        {skillCategories.map((cat, i) => (
+          <CategoryCard key={i} {...cat} index={i} />
+        ))}
       </div>
-      <img className="background-image-left" src={colorSharp} alt="Background" />
-    </section>
-  );
-}
+    </div>
+  </section>
+);
